@@ -5,6 +5,11 @@ use utf8;
 use Array::Shuffle qw(shuffle_array);
 
 #random double round-robin generator for max 20 player.
+warn "How many rounds: \n";
+chomp(my $round = <STDIN>);
+
+$round = 1 if $round eq '';
+
 
 open(DAT, "players.txt");
 chomp (my @p = <DAT>);
@@ -53,51 +58,57 @@ print "
 <body>
 ";
 
-print "<table class=\"a\"><tr><td>\n";
 
-printtable($h1p1,$h1p2,$h1p3,$h1p4,$h1p5,$h1p6,$h1p7,$h1p8,$h1p9,$h1p10);
-printtable($h2p1,$h2p2,$h2p3,$h2p4,$h2p5,$h2p6,$h2p7,$h2p8,$h2p9,$h2p10);
-printtable($h3p1,$h3p2,$h3p3,$h3p4,$h3p5,$h3p6,$h3p7,$h3p8,$h3p9,$h3p10);
-printtable($h4p1,$h4p2,$h4p3,$h4p4,$h4p5,$h4p6,$h4p7,$h4p8,$h4p9,$h4p10) if @q > 4;
-printtable($h5p1,$h5p2,$h5p3,$h5p4,$h5p5,$h5p6,$h5p7,$h5p8,$h5p9,$h5p10) if @q > 4;
-printtable($h6p1,$h6p2,$h6p3,$h6p4,$h6p5,$h6p6,$h6p7,$h6p8,$h6p9,$h6p10) if @q > 6;
-printtable($h7p1,$h7p2,$h7p3,$h7p4,$h7p5,$h7p6,$h7p7,$h7p8,$h7p9,$h7p10) if @q > 6;
-printtable($h8p1,$h8p2,$h8p3,$h8p4,$h8p5,$h8p6,$h8p7,$h8p8,$h8p9,$h8p10) if @q > 8;
-printtable($h9p1,$h9p2,$h9p3,$h9p4,$h9p5,$h9p6,$h9p7,$h9p8,$h9p9,$h9p10) if @q > 8;
-printtable($h10p1,$h10p2,$h10p3,$h10p4,$h10p5,$h10p6,$h10p7,$h10p8,$h10p9,$h10p10) if @q > 10;
-printtable($h11p1,$h11p2,$h11p3,$h11p4,$h11p5,$h11p6,$h11p7,$h11p8,$h11p9,$h11p10) if @q > 10;
-printtable($h12p1,$h12p2,$h12p3,$h12p4,$h12p5,$h12p6,$h12p7,$h12p8,$h12p9,$h12p10) if @q > 12;
-printtable($h13p1,$h13p2,$h13p3,$h13p4,$h13p5,$h13p6,$h13p7,$h13p8,$h13p9,$h13p10) if @q > 12;
-printtable($h14p1,$h14p2,$h14p3,$h14p4,$h14p5,$h14p6,$h14p7,$h14p8,$h14p9,$h14p10) if @q > 14;
-printtable($h15p1,$h15p2,$h15p3,$h15p4,$h15p5,$h15p6,$h15p7,$h15p8,$h15p9,$h15p10) if @q > 14;
-printtable($h16p1,$h16p2,$h16p3,$h16p4,$h16p5,$h16p6,$h16p7,$h16p8,$h16p9,$h16p10) if @q > 16;
-printtable($h17p1,$h17p2,$h17p3,$h17p4,$h17p5,$h17p6,$h17p7,$h17p8,$h17p9,$h17p10) if @q > 16;
-printtable($h18p1,$h18p2,$h18p3,$h18p4,$h18p5,$h18p6,$h18p7,$h18p8,$h18p9,$h18p10) if @q > 18;
-printtable($h19p1,$h19p2,$h19p3,$h19p4,$h19p5,$h19p6,$h19p7,$h19p8,$h19p9,$h19p10) if @q > 18;
+for (1..$round) {
+    print "<h1>Round $_</h1>\n";
+    print "<hr>\n";
+    print "<table class=\"a\"><tr><td>\n";
 
-print "</td><td>\n";
+    printtable($h1p1,$h1p2,$h1p3,$h1p4,$h1p5,$h1p6,$h1p7,$h1p8,$h1p9,$h1p10);
+    printtable($h2p1,$h2p2,$h2p3,$h2p4,$h2p5,$h2p6,$h2p7,$h2p8,$h2p9,$h2p10);
+    printtable($h3p1,$h3p2,$h3p3,$h3p4,$h3p5,$h3p6,$h3p7,$h3p8,$h3p9,$h3p10);
+    printtable($h4p1,$h4p2,$h4p3,$h4p4,$h4p5,$h4p6,$h4p7,$h4p8,$h4p9,$h4p10) if @q > 4;
+    printtable($h5p1,$h5p2,$h5p3,$h5p4,$h5p5,$h5p6,$h5p7,$h5p8,$h5p9,$h5p10) if @q > 4;
+    printtable($h6p1,$h6p2,$h6p3,$h6p4,$h6p5,$h6p6,$h6p7,$h6p8,$h6p9,$h6p10) if @q > 6;
+    printtable($h7p1,$h7p2,$h7p3,$h7p4,$h7p5,$h7p6,$h7p7,$h7p8,$h7p9,$h7p10) if @q > 6;
+    printtable($h8p1,$h8p2,$h8p3,$h8p4,$h8p5,$h8p6,$h8p7,$h8p8,$h8p9,$h8p10) if @q > 8;
+    printtable($h9p1,$h9p2,$h9p3,$h9p4,$h9p5,$h9p6,$h9p7,$h9p8,$h9p9,$h9p10) if @q > 8;
+    printtable($h10p1,$h10p2,$h10p3,$h10p4,$h10p5,$h10p6,$h10p7,$h10p8,$h10p9,$h10p10) if @q > 10;
+    printtable($h11p1,$h11p2,$h11p3,$h11p4,$h11p5,$h11p6,$h11p7,$h11p8,$h11p9,$h11p10) if @q > 10;
+    printtable($h12p1,$h12p2,$h12p3,$h12p4,$h12p5,$h12p6,$h12p7,$h12p8,$h12p9,$h12p10) if @q > 12;
+    printtable($h13p1,$h13p2,$h13p3,$h13p4,$h13p5,$h13p6,$h13p7,$h13p8,$h13p9,$h13p10) if @q > 12;
+    printtable($h14p1,$h14p2,$h14p3,$h14p4,$h14p5,$h14p6,$h14p7,$h14p8,$h14p9,$h14p10) if @q > 14;
+    printtable($h15p1,$h15p2,$h15p3,$h15p4,$h15p5,$h15p6,$h15p7,$h15p8,$h15p9,$h15p10) if @q > 14;
+    printtable($h16p1,$h16p2,$h16p3,$h16p4,$h16p5,$h16p6,$h16p7,$h16p8,$h16p9,$h16p10) if @q > 16;
+    printtable($h17p1,$h17p2,$h17p3,$h17p4,$h17p5,$h17p6,$h17p7,$h17p8,$h17p9,$h17p10) if @q > 16;
+    printtable($h18p1,$h18p2,$h18p3,$h18p4,$h18p5,$h18p6,$h18p7,$h18p8,$h18p9,$h18p10) if @q > 18;
+    printtable($h19p1,$h19p2,$h19p3,$h19p4,$h19p5,$h19p6,$h19p7,$h19p8,$h19p9,$h19p10) if @q > 18;
 
-printtable($r1p1,$r1p2,$r1p3,$r1p4,$r1p5,$r1p6,$r1p7,$r1p8,$r1p9,$r1p10);
-printtable($r2p1,$r2p2,$r2p3,$r2p4,$r2p5,$r2p6,$r2p7,$r2p8,$r2p9,$r2p10);
-printtable($r3p1,$r3p2,$r3p3,$r3p4,$r3p5,$r3p6,$r3p7,$r3p8,$r3p9,$r3p10);
-printtable($r4p1,$r4p2,$r4p3,$r4p4,$r4p5,$r4p6,$r4p7,$r4p8,$r4p9,$r4p10) if @q > 4;
-printtable($r5p1,$r5p2,$r5p3,$r5p4,$r5p5,$r5p6,$r5p7,$r5p8,$r5p9,$r5p10) if @q > 4;
-printtable($r6p1,$r6p2,$r6p3,$r6p4,$r6p5,$r6p6,$r6p7,$r6p8,$r6p9,$r6p10) if @q > 6;
-printtable($r7p1,$r7p2,$r7p3,$r7p4,$r7p5,$r7p6,$r7p7,$r7p8,$r7p9,$r7p10) if @q > 6;
-printtable($r8p1,$r8p2,$r8p3,$r8p4,$r8p5,$r8p6,$r8p7,$r8p8,$r8p9,$r8p10) if @q > 8;
-printtable($r9p1,$r9p2,$r9p3,$r9p4,$r9p5,$r9p6,$r9p7,$r9p8,$r9p9,$r9p10) if @q > 8;
-printtable($r10p1,$r10p2,$r10p3,$r10p4,$r10p5,$r10p6,$r10p7,$r10p8,$r10p9,$r10p10) if @q > 10;
-printtable($r11p1,$r11p2,$r11p3,$r11p4,$r11p5,$r11p6,$r11p7,$r11p8,$r11p9,$r11p10) if @q > 10;
-printtable($r12p1,$r12p2,$r12p3,$r12p4,$r12p5,$r12p6,$r12p7,$r12p8,$r12p9,$r12p10) if @q > 12;
-printtable($r13p1,$r13p2,$r13p3,$r13p4,$r13p5,$r13p6,$r13p7,$r13p8,$r13p9,$r13p10) if @q > 12;
-printtable($r14p1,$r14p2,$r14p3,$r14p4,$r14p5,$r14p6,$r14p7,$r14p8,$r14p9,$r14p10) if @q > 14;
-printtable($r15p1,$r15p2,$r15p3,$r15p4,$r15p5,$r15p6,$r15p7,$r15p8,$r15p9,$r15p10) if @q > 14;
-printtable($r16p1,$r16p2,$r16p3,$r16p4,$r16p5,$r16p6,$r16p7,$r16p8,$r16p9,$r16p10) if @q > 16;
-printtable($r17p1,$r17p2,$r17p3,$r17p4,$r17p5,$r17p6,$r17p7,$r17p8,$r17p9,$r17p10) if @q > 16;
-printtable($r18p1,$r18p2,$r18p3,$r18p4,$r18p5,$r18p6,$r18p7,$r18p8,$r18p9,$r18p10) if @q > 18;
-printtable($r19p1,$r19p2,$r19p3,$r19p4,$r19p5,$r19p6,$r19p7,$r19p8,$r19p9,$r19p10) if @q > 18;
+    print "</td><td>\n";
 
-print "</td></tr></table>\n";
+    printtable($r1p1,$r1p2,$r1p3,$r1p4,$r1p5,$r1p6,$r1p7,$r1p8,$r1p9,$r1p10);
+    printtable($r2p1,$r2p2,$r2p3,$r2p4,$r2p5,$r2p6,$r2p7,$r2p8,$r2p9,$r2p10);
+    printtable($r3p1,$r3p2,$r3p3,$r3p4,$r3p5,$r3p6,$r3p7,$r3p8,$r3p9,$r3p10);
+    printtable($r4p1,$r4p2,$r4p3,$r4p4,$r4p5,$r4p6,$r4p7,$r4p8,$r4p9,$r4p10) if @q > 4;
+    printtable($r5p1,$r5p2,$r5p3,$r5p4,$r5p5,$r5p6,$r5p7,$r5p8,$r5p9,$r5p10) if @q > 4;
+    printtable($r6p1,$r6p2,$r6p3,$r6p4,$r6p5,$r6p6,$r6p7,$r6p8,$r6p9,$r6p10) if @q > 6;
+    printtable($r7p1,$r7p2,$r7p3,$r7p4,$r7p5,$r7p6,$r7p7,$r7p8,$r7p9,$r7p10) if @q > 6;
+    printtable($r8p1,$r8p2,$r8p3,$r8p4,$r8p5,$r8p6,$r8p7,$r8p8,$r8p9,$r8p10) if @q > 8;
+    printtable($r9p1,$r9p2,$r9p3,$r9p4,$r9p5,$r9p6,$r9p7,$r9p8,$r9p9,$r9p10) if @q > 8;
+    printtable($r10p1,$r10p2,$r10p3,$r10p4,$r10p5,$r10p6,$r10p7,$r10p8,$r10p9,$r10p10) if @q > 10;
+    printtable($r11p1,$r11p2,$r11p3,$r11p4,$r11p5,$r11p6,$r11p7,$r11p8,$r11p9,$r11p10) if @q > 10;
+    printtable($r12p1,$r12p2,$r12p3,$r12p4,$r12p5,$r12p6,$r12p7,$r12p8,$r12p9,$r12p10) if @q > 12;
+    printtable($r13p1,$r13p2,$r13p3,$r13p4,$r13p5,$r13p6,$r13p7,$r13p8,$r13p9,$r13p10) if @q > 12;
+    printtable($r14p1,$r14p2,$r14p3,$r14p4,$r14p5,$r14p6,$r14p7,$r14p8,$r14p9,$r14p10) if @q > 14;
+    printtable($r15p1,$r15p2,$r15p3,$r15p4,$r15p5,$r15p6,$r15p7,$r15p8,$r15p9,$r15p10) if @q > 14;
+    printtable($r16p1,$r16p2,$r16p3,$r16p4,$r16p5,$r16p6,$r16p7,$r16p8,$r16p9,$r16p10) if @q > 16;
+    printtable($r17p1,$r17p2,$r17p3,$r17p4,$r17p5,$r17p6,$r17p7,$r17p8,$r17p9,$r17p10) if @q > 16;
+    printtable($r18p1,$r18p2,$r18p3,$r18p4,$r18p5,$r18p6,$r18p7,$r18p8,$r18p9,$r18p10) if @q > 18;
+    printtable($r19p1,$r19p2,$r19p3,$r19p4,$r19p5,$r19p6,$r19p7,$r19p8,$r19p9,$r19p10) if @q > 18;
+
+    print "</td></tr></table>\n";
+}
+
 print "</body>\n";
 print "</html>\n";
 
@@ -128,7 +139,7 @@ sub printtable {
     my $r10 = $rndcnt * @q / 2 - @q / 2 + 10 if @q > 18;
     my $r11 = $rndcnt * @q / 2 - @q / 2 + 11 if @q > 20;
     
-    print "<h2>Round $rndcnt</h2>\n";
+    print "<h2>Game $rndcnt</h2>\n";
     print "<table class=\"r\">\n";
     print "<tr><td class=\"r\" width=\"35\">#$r1</td><td class=\"r\" width=\"400\">$v1</td><td class=\"r\" width=\"50\">&nbsp;</td></tr>\n";
     print "<tr><td class=\"r\">#$r2</td><td class=\"r\">$v2</td><td class=\"r\" width=\"50\">&nbsp;</td></tr>\n";
