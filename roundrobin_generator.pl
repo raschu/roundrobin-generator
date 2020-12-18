@@ -15,6 +15,9 @@ open(DAT, "players.txt");
 chomp (my @p = <DAT>);
 close(DAT);
 
+open(SQL, ">sql.txt");
+print SQL "DELETE FROM \"main\".\"results\";\n";
+
 die "this script supports not more than 20 players" if @p > 20;
 
 my @q;
@@ -123,7 +126,6 @@ sub printtable {
     my $v8 = shift if @q > 14;
     my $v9 = shift if @q > 16;
     my $v10 = shift if @q > 18;
-    my $v11 = shift if @q > 20;
     
     $rndcnt++;
             
@@ -137,7 +139,28 @@ sub printtable {
     my $r8 = $rndcnt * @q / 2 - @q / 2 + 8 if @q > 14;
     my $r9 = $rndcnt * @q / 2 - @q / 2 + 9 if @q > 16;
     my $r10 = $rndcnt * @q / 2 - @q / 2 + 10 if @q > 18;
-    my $r11 = $rndcnt * @q / 2 - @q / 2 + 11 if @q > 20;
+    
+    my ($white1, $black1) = split(/ - /, $v1);
+    my ($white2, $black2) = split(/ - /, $v2);
+    my ($white3, $black3) = split(/ - /, $v3) if @q > 4;
+    my ($white4, $black4) = split(/ - /, $v4) if @q > 6;
+    my ($white5, $black5) = split(/ - /, $v5) if @q > 8;
+    my ($white6, $black6) = split(/ - /, $v6) if @q > 10;
+    my ($white7, $black7) = split(/ - /, $v7) if @q > 12;
+    my ($white8, $black8) = split(/ - /, $v8) if @q > 14;
+    my ($white9, $black9) = split(/ - /, $v9) if @q > 16;
+    my ($white10, $black10) = split(/ - /, $v10) if @q > 18;
+    
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r1,'$white1', '$black1');\n";
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r2,'$white2', '$black2');\n";
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r3,'$white3', '$black3');\n" if @q > 4;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r4,'$white4', '$black4');\n" if @q > 6;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r5,'$white5', '$black5');\n" if @q > 8;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r6,'$white6', '$black6');\n" if @q > 10;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r7,'$white7', '$black7');\n" if @q > 12;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r8,'$white8', '$black8');\n" if @q > 14;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r9,'$white9', '$black9');\n" if @q > 16;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\") Values($round,$rndcnt,$r10,'$white10', '$black10');\n" if @q > 18;
     
     print "<h2>Game $rndcnt</h2>\n";
     print "<table class=\"r\">\n";
@@ -151,6 +174,6 @@ sub printtable {
     print "<tr><td class=\"r\">#$r8</td><td class=\"r\">$v8</td><td class=\"r\">&nbsp;</td></tr>\n"  if @q > 14;
     print "<tr><td class=\"r\">#$r9</td><td class=\"r\">$v9</td><td class=\"r\">&nbsp;</td></tr>\n"  if @q > 16;
     print "<tr><td class=\"r\">#$r10</td><td class=\"r\">$v10</td><td class=\"r\">&nbsp;</td></tr>\n"  if @q > 18;
-    print "<tr><td class=\"r\">#$r11</td><td class=\"r\">$v11</td><td class=\"r\">&nbsp;</td></tr>\n"  if @q > 20;
     print "</table>\n";
 }
+
