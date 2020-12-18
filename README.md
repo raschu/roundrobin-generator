@@ -1,6 +1,6 @@
 # double round-robin generator for up to 20 players
 
-* generates a simple, randomized HTML table 
+* generates a simple, randomized HTML table and corresponding SQL querys
 * edit players.txt
 * then run:
 
