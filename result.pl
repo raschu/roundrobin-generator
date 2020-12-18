@@ -29,7 +29,7 @@ for my $p (@players) {
 
     while (my $row = $sth->fetchrow_array()) {
           $sum++ if $row eq '1-0';
-          $sum = $sum + 0.5 if $row eq '0.5-0.5';
+          $sum = $sum + 0.5 if $row =~ m/0.5/;
     }
     
     $stmt = qq(select result from results where black = '$p';);
@@ -38,7 +38,7 @@ for my $p (@players) {
 
     while (my $row = $sth->fetchrow_array()) {
           $sum++ if $row eq '0-1';
-          $sum = $sum + 0.5 if $row eq '0.5-0.5';
+          $sum = $sum + 0.5 if $row =~ m/0.5/;
           $cnt++;
     }    
     
