@@ -42,14 +42,16 @@ for my $p (@players) {
           $cnt++;
     }    
     
-    $ranking{$sum} = $p;
+    $ranking{$p} = $sum;
 }
 
-for my $s (reverse sort keys %ranking) {
-    print "$s\t$ranking{$s}\n";
+
+foreach my $name (reverse sort { $ranking{$a} <=> $ranking{$b} or $a cmp $b } keys %ranking) {
+    printf "%-20s %s\n", $name, $ranking{$name};
 }
 
-print "--------\n";
-print "$cnt\n";
+print "------------------------\n"; 
+print "sum                  $cnt\n";
 
 $dbh->disconnect();
+
