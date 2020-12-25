@@ -7,3 +7,14 @@
 ```
 perl ./\roundrobin_generator.pl >out.html
 ```
+
+```
+Execute querys form sql.txt in tournament.sqlite
+```
+
+* start results and rankings server
+```
+cd results/bin
+perl ./\app.pl
+```
+

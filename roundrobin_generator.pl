@@ -115,6 +115,10 @@ for (1..$round) {
 print "</body>\n";
 print "</html>\n";
 
+print SQL "UPDATE \"main\".\"results\" SET \"result\" = \"---\" where black = \"BYE\";\n";
+print SQL "UPDATE \"main\".\"results\" SET \"result\" = \"---\" where white = \"BYE\";\n";
+
+
 sub printtable {
     my $v1 = shift; 
     my $v2 = shift;
