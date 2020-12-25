@@ -7,7 +7,8 @@ our $VERSION = '0.1';
 
 get '/results' => sub {
     content_type 'application/json';
-    my @rows  = database->quick_select('results',{result => [ '1-0', '0-1', 'remis' ]},{order_by => {asc => 'id'}});
+    #my @rows  = database->quick_select('results',{result => [ '1-0', '0-1', 'remis' ]},{order_by => {asc => 'id'}});
+    my @rows  = database->quick_select('results',{},{order_by => {asc => 'id'}});
     template 'index.tt', {data => to_json \@rows}, { layout => 'main' };
 };
 
