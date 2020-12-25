@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<style>
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+#results {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 600px;
+}
+#ranking {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 300px;
+}
+#results td, #results th {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+#ranking td, #ranking th {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+#results tr:nth-child(even){background-color: #f2f2f2;}
+#ranking tr:nth-child(even){background-color: #f2f2f2;}
+#results tr:hover {background-color: #ddd;}
+#ranking tr:hover {background-color: #ddd;}
+#results th {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#ranking th {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<table>
+<tr>
+<td valign=top>
+<h2>Resultate</h2>
+<div id="id_table"></div>
+</td>
+<td valign=top>
+<h2>Rangliste</h2>
+<div id="id_ranking"></div>
+</td>
+</tr>
+</table>
+<script>
+
+getResults();
+getRanking();
+
+window.setInterval(function(){
+getResults();
+}, 3000   );
+
+
+function getResults() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/results";
+
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        calcTable(myArr);
+      }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    getRanking();
+}
+
+function getRanking() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/ranking";
+
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("id_ranking").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+ 
+function calcTable(arr) {
+    var HTML = "<table id=\"results\"><tr><th>Spiel-Nr.</th><th>Weiss</th><th>Schwarz</th><th>Resultat</th></tr>"; 
+    var i;
+
+    for(i = 0; i < arr.length; i++) {
+        HTML +=  '<tr><td align=right>' + arr[i].no + '&nbsp;</td><td>' + arr[i].white + '</td><td>' + arr[i].black + '</td><td>' + arr[i].result + '</td></tr>';
+    }
+    HTML += "</table>";
+    document.getElementById("id_table").innerHTML = HTML;
+}
+</script>   
+</body>
