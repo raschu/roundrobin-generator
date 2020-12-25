@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <style>
 h2 {
-  monospace;
+  font-family: monospace;
 }
 #results {
   font-family: monospace;
