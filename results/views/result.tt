@@ -4,15 +4,15 @@
 <meta charset="utf-8"/>
 <style>
 h2 {
-  font-family: Arial, Helvetica, sans-serif;
+  monospace;
 }
 #results {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: monospace;
   border-collapse: collapse;
   width: 600px;
 }
 #ranking {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: monospace;
   border-collapse: collapse;
   width: 300px;
 }
