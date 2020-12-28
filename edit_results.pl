@@ -32,9 +32,9 @@ sub updategame {
     }
 
     while(my @row = $sth->fetchrow_array()) {
-        print "ID     = ". $row[0] . "\n";
-        print "NO     = ". $row[1] . "\n";
-        print "GAME   = ". $row[2] . "\n";
+        #print "ID     = ". $row[0] . "\n";
+        #print "NO     = ". $row[1] . "\n";
+        #print "GAME   = ". $row[2] . "\n";
         print "WHITE  = ". $row[3] . "\n";
         print "BLACK  = ". $row[4] . "\n";
         print "RESULT = ". $row[5] . "\n\n";
