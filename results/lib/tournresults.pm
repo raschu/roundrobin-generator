@@ -48,7 +48,7 @@ sub calcresults {
 
     for my $p (@players) {
         my $sum  = 0;    
-        my $stmt = qq(select result from results where white = '$p';);
+        my $stmt = qq(select result from results where white = '$p' ORDER BY result DESC;);
         my $sth  = $dbh->prepare( $stmt );
         my $rv   = $sth->execute() or die $DBI::errstr;
 
@@ -57,7 +57,7 @@ sub calcresults {
               $sum = $sum + 0.5 if $row =~ m/remis/;
         }
         
-        $stmt = qq(select result from results where black = '$p';);
+        $stmt = qq(select result from results where black = '$p' ORDER BY result DESC;);
         $sth  = $dbh->prepare( $stmt );
         $rv   = $sth->execute() or die $DBI::errstr;
 
