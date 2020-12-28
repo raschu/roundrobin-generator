@@ -15,3 +15,8 @@ cd results/bin
 perl ./\app.pl
 ```
 
+* edit results
+
+```
+perl ./\edit_results.pl
+```
