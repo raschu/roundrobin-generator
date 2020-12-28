@@ -23,7 +23,7 @@ sub updategame {
     my $white;
     my $black;
 
-    my $stmt = qq(SELECT id, no, game, white, black, who_won from who_wons WHERE no = $gameno;);
+    my $stmt = qq(SELECT id, no, game, white, black, result from results WHERE no = $gameno;);
     my $sth  = $dbh->prepare( $stmt );
     my $rv   = $sth->execute() or die $DBI::errstr;
 
@@ -37,7 +37,7 @@ sub updategame {
         print "GAME   = ". $row[2] . "\n";
         print "WHITE  = ". $row[3] . "\n";
         print "BLACK  = ". $row[4] . "\n";
-        print "who_won = ". $row[5] . "\n\n";
+        print "RESULT = ". $row[5] . "\n\n";
         
         $white = $row[3];
         $black = $row[4];        
@@ -49,13 +49,13 @@ sub updategame {
     
     if ($who_won eq $white) {
         print "$white hat gewonnen (weiss)\n";
-        $stmt = qq(UPDATE who_wons set who_won = '1-0' WHERE no = $gameno;);
+        $stmt = qq(UPDATE results set result = '1-0' WHERE no = $gameno;);
     } elsif ($who_won eq $black) {
         print "$black hat gewonnen (schwarz)\n";
-        $stmt = qq(UPDATE who_wons set who_won = '0-1' WHERE no = $gameno;);
+        $stmt = qq(UPDATE results set result = '0-1' WHERE no = $gameno;);
     } else {
         print "remis\n";
-        $stmt = qq(UPDATE who_wons set who_won = 'remis' WHERE no = $gameno;);
+        $stmt = qq(UPDATE results set result = 'remis' WHERE no = $gameno;);
     }
 
     my $sth  = $dbh->prepare( $stmt );
