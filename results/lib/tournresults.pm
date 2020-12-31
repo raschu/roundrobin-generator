@@ -4,10 +4,16 @@ use Dancer::Plugin::Database;
 
 our $VERSION = '0.1';
 
+my $driver   = "SQLite";
+my $database = "C:/dev/www/roundrobin-generator/tournament.sqlite";
+my $dsn      = "DBI:$driver:dbname=$database";
+my $userid   = "";
+my $password = "";
+my $dbh = DBI->connect($dsn, $userid, $password, { RaiseError => 1 }) or die $DBI::errstr;
+
 
 get '/results' => sub {
     content_type 'application/json';
-    #my @rows  = database->quick_select('results',{result => [ '1-0', '0-1', 'remis' ]},{order_by => {asc => 'id'}});
     my @rows  = database->quick_select('results',{},{order_by => {asc => 'id'}});
     template 'index.tt', {data => to_json \@rows}, { layout => 'main' };
 };
@@ -25,14 +31,36 @@ get '/ranking' => sub {
     template 'ranking.tt', {ranking => $h};
 };
 
+get '/' => sub {
+    my $stmt = qq(SELECT DISTINCT(white) FROM results order by white desc;);
+    my $sth  = $dbh->prepare( $stmt );
+    my $rv   = $sth->execute() or die $DBI::errstr;
+    
+    my $stmt2 = qq(SELECT event FROM metadata where id = 1;);
+    my $sth2  = $dbh->prepare( $stmt2 );
+    my $rv2   = $sth2->execute() or die $DBI::errstr;
+    
+    my $event = $sth2->fetchrow_array;
+    
+    my $stmt3 = qq(SELECT img FROM images;);
+    my $sth3  = $dbh->prepare( $stmt3 );
+    my $rv3   = $sth3->execute() or die $DBI::errstr;
+    
+    my @images;
+    
+    while (my @row = $sth3->fetchrow_array()) {
+        push(@images, $row[0]);
+    }
+       
+    
+    my $cnt  = 0;
+    $cnt ++ while (my $row = $sth->fetchrow_array());
+    
+    template 'result', {cntrows => $cnt / 2, event => $event, images => [@images]};
+};
+
 
 sub calcresults {
-    my $driver   = "SQLite";
-    my $database = "c:/Users/ralph/temp/roundrobin-generator-master/tournament.sqlite";
-    my $dsn      = "DBI:$driver:dbname=$database";
-    my $userid   = "";
-    my $password = "";
-    my $dbh = DBI->connect($dsn, $userid, $password, { RaiseError => 1 }) or die $DBI::errstr;
     my $cnt;
     my @players;
     my @ranking;
@@ -78,10 +106,5 @@ sub calcresults {
     $dbh->disconnect();
     
 }
-
-
-get '/' => sub {
-    template 'result';
-};
 
 true;
