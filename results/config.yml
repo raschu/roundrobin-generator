@@ -32,4 +32,4 @@ engines:
 plugins: 
     Database:
         driver: 'SQLite'
-        database: 'C:/dev/www/roundrobin-generator/tournament.sqlite'
+        database: '/root/www/ralphweb/public/chess/roundrobin/tournament.sqlite'
