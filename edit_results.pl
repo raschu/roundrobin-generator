@@ -5,7 +5,7 @@ use strict;
 use Term::Choose qw(choose);
 
 my $driver   = "SQLite";
-my $database = "tournament.sqlite";
+my $database = "/root/www/ralphweb/public/chess/roundrobin/tournament.sqlite";
 my $dsn      = "DBI:$driver:dbname=$database";
 my $userid   = "";
 my $password = "";
