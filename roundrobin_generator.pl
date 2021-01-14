@@ -155,16 +155,16 @@ sub printtable {
     my ($white9, $black9) = split(/ - /, $v9) if @q > 16;
     my ($white10, $black10) = split(/ - /, $v10) if @q > 18;
     
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r1,'$white1','$black1','','https://lichess.org/12345678');\n";
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r2,'$white2','$black2','','https://lichess.org/12345678');\n";
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r3,'$white3','$black3','','https://lichess.org/12345678');\n" if @q > 4;
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r4,'$white4','$black4','','https://lichess.org/12345678');\n" if @q > 6;
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r5,'$white5','$black5','','https://lichess.org/12345678');\n" if @q > 8;
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r6,'$white6','$black6','','https://lichess.org/12345678');\n" if @q > 10;
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r7,'$white7','$black7','','https://lichess.org/12345678');\n" if @q > 12;
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r8,'$white8','$black8','','https://lichess.org/12345678');\n" if @q > 14;
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r9,'$white9','$black9','','https://lichess.org/12345678');\n" if @q > 16;
-    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r10,'$white10','$black10','','https://lichess.org/12345678');\n" if @q > 18;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r1,'$white1','$black1','','');\n";
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r2,'$white2','$black2','','');\n";
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r3,'$white3','$black3','','');\n" if @q > 4;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r4,'$white4','$black4','','');\n" if @q > 6;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r5,'$white5','$black5','','');\n" if @q > 8;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r6,'$white6','$black6','','');\n" if @q > 10;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r7,'$white7','$black7','','');\n" if @q > 12;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r8,'$white8','$black8','','');\n" if @q > 14;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r9,'$white9','$black9','','');\n" if @q > 16;
+    print SQL "INSERT INTO \"main\".\"results\"(\"round\",\"game\",\"no\",\"white\",\"black\",\"result\",\"gameurl\") Values($_,$rndcnt,$r10,'$white10','$black10','','');\n" if @q > 18;
     
     print "<h2>Game $rndcnt</h2>\n";
     print "<table class=\"r\">\n";
