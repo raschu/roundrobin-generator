@@ -6,6 +6,7 @@ our $VERSION = '0.1';
 
 my $driver   = "SQLite";
 my $database = "/root/www/ralphweb/public/chess/roundrobin/tournament.sqlite";
+#my $database = "C:/Users/ralph/temp/roundrobin-generator/tournament.sqlite";
 my $dsn      = "DBI:$driver:dbname=$database";
 my $userid   = "";
 my $password = "";
@@ -49,7 +50,7 @@ get '/' => sub {
     my @images;
     
     while (my @row = $sth3->fetchrow_array()) {
-        push(@images, $row[0]);
+        push(@images, $row[0]) unless $row[0] =~ m/placeholder/;
     }
        
     

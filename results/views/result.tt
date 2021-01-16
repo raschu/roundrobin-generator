@@ -3,52 +3,7 @@
 <head>
 <title><%event%></title>
 <meta charset="utf-8"/>
-<style>
-h2, h1 {
-  font-family: monospace;
-}
-a {
-  color: black;
-}
-#results {
-  font-family: monospace;
-  border-collapse: collapse;
-  width: 600px;
-}
-#ranking {
-  font-family: monospace;
-  border-collapse: collapse;
-  width: 300px;
-}
-#results td, #results th {
-  border: 1px solid #ddd;
-  padding: 2px;
-}
-#ranking td, #ranking th {
-  border: 1px solid #ddd;
-  padding: 2px;
-}
-
-tr.dark { 
-  background: #f2f2f2;
-}
-
-
-#results th {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-#ranking th {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
+<link rel="stylesheet" href="https://ralphschuler.ch/chess/roundrobin/rrstyle.css" type="text/css" />
 </head>
 <body>
 <h1><%event%></h1>
@@ -104,15 +59,15 @@ function getRanking() {
 
  
 function calcTable(arr) {
-    var HTML = "<table id=\"results\"><tr><th>Runde</th><th>#</th><th>Weiss</th><th>Schwarz</th><th>Resultat</th></tr>"; 
+    var HTML = "<table id=\"results\"><tr><th>Runde</th><th>Weiss</th><th>Schwarz</th><th>Resultat</th><th>Spiel</th></tr>"; 
     var i;
     var dark = 0;
     for(i = 0; i < arr.length; i++) {
         dark++;
         if (dark <= <%cntrows%>) {
-            HTML +=  '<tr><td align=right>' + arr[i].game + '</td><td align=right><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td><td>' + arr[i].white + '</td><td>' + arr[i].black + '</td><td>' + arr[i].result + '</td></tr>';
+            HTML +=  '<tr><td align=left>' + arr[i].game + '</td><td>' + arr[i].white + '</td><td>' + arr[i].black + '</td><td>' + arr[i].result + '</td><td align=left><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td></tr>';
         } else {
-            HTML +=  '<tr class=dark><td align=right>' + arr[i].game + '</td><td align=right><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td><td>' + arr[i].white + '</td><td>' + arr[i].black + '</td><td>' + arr[i].result + '</td></tr>';
+            HTML +=  '<tr class=dark><td align=left>' + arr[i].game + '</td><td>' + arr[i].white + '</td><td>' + arr[i].black + '</td><td>' + arr[i].result + '</td><td align=left><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td></tr>';
         }
         
         if (dark == <%cntrows%> * 2) {
