@@ -24,22 +24,6 @@ warn "11 players: 1 round,  20 games per player, duration of tournament: 220 min
 warn "12 players: 1 round,  22 games per player, duration of tournament: 220 minutes\n";
 warn "------------------------------------------------------------------------------\n";
 
-
-#3 -> 2 Runden, 24 Partien (8  Partien pro Spieler), Dauer: 12 x 10 Minuten = 120 Minuten
-#4 -> 2 Runden, 24 Partien (12 Partien pro Spieler), Dauer: 12 x 10 Minuten = 120 Minuten
-#
-#5 -> 1 Runde , 30 Partien (8  Partien pro Spieler), Dauer: 10 x 10 Minuten = 100 Minuten
-#6 -> 1 Runde , 30 Partien (10 Partien pro Spieler), Dauer: 10 x 10 Minuten = 100 Minuten
-#
-#7 -> 1 Runde , 56 Partien (12 Partien pro Spieler), Dauer: 14 x 10 Minuten = 140 Minuten  Schweizer Turnier, halbieren oder so belassen?
-#8 -> 1 Runde , 56 Partien (14 Partien pro Spieler), Dauer: 14 x 10 Minuten = 140 Minuten  Schweizer Turnier, halbieren oder so belassen?
-#
-#9 -> 1 Runde , 90 Partien (16 Partien pro Spieler), Dauer: 18 x 10 Minuten = 180 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
-#10-> 1 Runde , 90 Partien (18 Partien pro Spieler), Dauer: 18 x 10 Minuten = 180 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
-#
-#11-> 1 Runde, 132 Partien (20 Partien pro Spieler), Dauer: 22 x 10 Minuten = 220 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
-#12-> 1 Runde, 132 Partien (22 Partien pro Spieler), Dauer: 22 x 10 Minuten = 220 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
-
 warn "How many rounds: \n";
 chomp(my $round = <STDIN>);
 
