@@ -5,11 +5,45 @@ use utf8;
 use Array::Shuffle qw(shuffle_array);
 
 #random double round-robin generator for max 20 player.
+
+warn "time matrix based on 5 0 games:\n";
+warn "------------------------------------------------------------------------------\n";
+warn " 3 players: 2 rounds,  8 games per player, duration of tournament: 120 minutes\n";
+warn " 4 players: 2 rounds, 12 games per player, duration of tournament: 120 minutes\n";
+warn "------------------------------------------------------------------------------\n";
+warn " 5 players: 1 round,   8 games per player, duration of tournament: 100 minutes\n";
+warn " 6 players: 1 round,  10 games per player, duration of tournament: 100 minutes\n";
+warn "------------------------------------------------------------------------------\n";
+warn " 7 players: 1 round,  12 games per player, duration of tournament: 140 minutes\n";
+warn " 8 players: 1 round,  14 games per player, duration of tournament: 140 minutes\n";
+warn "------------------------------------------------------------------------------\n";
+warn " 9 players: 1 round,  16 games per player, duration of tournament: 180 minutes\n";
+warn "10 players: 1 round,  18 games per player, duration of tournament: 180 minutes\n";
+warn "------------------------------------------------------------------------------\n";
+warn "11 players: 1 round,  20 games per player, duration of tournament: 220 minutes\n";
+warn "12 players: 1 round,  22 games per player, duration of tournament: 220 minutes\n";
+warn "------------------------------------------------------------------------------\n";
+
+
+#3 -> 2 Runden, 24 Partien (8  Partien pro Spieler), Dauer: 12 x 10 Minuten = 120 Minuten
+#4 -> 2 Runden, 24 Partien (12 Partien pro Spieler), Dauer: 12 x 10 Minuten = 120 Minuten
+#
+#5 -> 1 Runde , 30 Partien (8  Partien pro Spieler), Dauer: 10 x 10 Minuten = 100 Minuten
+#6 -> 1 Runde , 30 Partien (10 Partien pro Spieler), Dauer: 10 x 10 Minuten = 100 Minuten
+#
+#7 -> 1 Runde , 56 Partien (12 Partien pro Spieler), Dauer: 14 x 10 Minuten = 140 Minuten  Schweizer Turnier, halbieren oder so belassen?
+#8 -> 1 Runde , 56 Partien (14 Partien pro Spieler), Dauer: 14 x 10 Minuten = 140 Minuten  Schweizer Turnier, halbieren oder so belassen?
+#
+#9 -> 1 Runde , 90 Partien (16 Partien pro Spieler), Dauer: 18 x 10 Minuten = 180 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
+#10-> 1 Runde , 90 Partien (18 Partien pro Spieler), Dauer: 18 x 10 Minuten = 180 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
+#
+#11-> 1 Runde, 132 Partien (20 Partien pro Spieler), Dauer: 22 x 10 Minuten = 220 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
+#12-> 1 Runde, 132 Partien (22 Partien pro Spieler), Dauer: 22 x 10 Minuten = 220 Minuten  VORSCHLAG: halbieren, dafür kein Farbausgleich
+
 warn "How many rounds: \n";
 chomp(my $round = <STDIN>);
 
 $round = 1 if $round eq '';
-
 
 open(DAT, "players.txt");
 chomp (my @p = <DAT>);
@@ -115,8 +149,8 @@ for (1..$round) {
 print "</body>\n";
 print "</html>\n";
 
-print SQL "UPDATE \"main\".\"results\" SET \"result\" = \"---\" where black = \"BYE\";\n";
-print SQL "UPDATE \"main\".\"results\" SET \"result\" = \"---\" where white = \"BYE\";\n";
+print SQL "UPDATE \"main\".\"results\" SET \"result\" = \"1-0\" where black = \"BYE\";\n";
+print SQL "UPDATE \"main\".\"results\" SET \"result\" = \"0-1\" where white = \"BYE\";\n";
 
 
 sub printtable {
