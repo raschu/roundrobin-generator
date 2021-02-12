@@ -10,10 +10,10 @@ my $dsn      = "DBI:$driver:dbname=$database";
 my $userid   = "";
 my $password = "";
 my $dbh      = DBI->connect($dsn, $userid, $password, { RaiseError => 1 }) or die $DBI::errstr;
-my $gameno = $ARGV[0];
+my $gameno   = shift or die "Usage: edit <game_no>\n";
 
-print "Spielnummer: " unless defined $gameno;
-chomp ($gameno = <>);
+#print "Spielnummer: " unless defined $gameno;
+#chomp ($gameno = <>);
 
 updategame($gameno);
 
