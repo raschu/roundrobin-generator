@@ -65,9 +65,9 @@ function calcTable(arr) {
     for(i = 0; i < arr.length; i++) {
         dark++;
         if (dark <= <%cntrows%>) {
-            HTML +=  '<tr><td align=left>' + arr[i].game + '</td><td>' + arr[i].white + '</td><td>' + arr[i].black + '</td><td>' + arr[i].result + '</td><td align=left><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td></tr>';
+            HTML +=  '<tr><td align=left>' + arr[i].game + '</td><td><a href="https://lichess.org/@/' + arr[i].white + '/tv">'+ arr[i].white +'</a></td><td><a href="https://lichess.org/@/' + arr[i].black + '/tv">'+ arr[i].black +'</a></td><td>' + arr[i].result + '</td><td align=left><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td></tr>';
         } else {
-            HTML +=  '<tr class=dark><td align=left>' + arr[i].game + '</td><td>' + arr[i].white + '</td><td>' + arr[i].black + '</td><td>' + arr[i].result + '</td><td align=left><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td></tr>';
+            HTML +=  '<tr class=dark><td align=left>' + arr[i].game + '</td><td><a href="https://lichess.org/@/' + arr[i].white + '/tv">'+ arr[i].white +'</a></td><td><a href="https://lichess.org/@/' + arr[i].black + '/tv">'+ arr[i].black +'</a></td><td>' + arr[i].result + '</td><td align=left><a href="' +arr[i].gameurl + '">' + arr[i].no + '</a></td></tr>';
         }
         
         if (dark == <%cntrows%> * 2) {
