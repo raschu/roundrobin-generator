@@ -7,9 +7,7 @@ use Term::Choose qw(choose);
 my $driver   = "SQLite";
 my $database = "/root/www/ralphweb/public/chess/roundrobin/tournament.sqlite";
 my $dsn      = "DBI:$driver:dbname=$database";
-my $userid   = "";
-my $password = "";
-my $dbh      = DBI->connect($dsn, $userid, $password, { RaiseError => 1 }) or die $DBI::errstr;
+my $dbh      = DBI->connect($dsn, '', '', { RaiseError => 1 }) or die $DBI::errstr;
 my $gameno   = shift or die "Usage: edit <game_no>\n";
 
 #print "Spielnummer: " unless defined $gameno;
