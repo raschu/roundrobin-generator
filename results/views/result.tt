@@ -27,7 +27,7 @@ getRanking();
 
 window.setInterval(function(){
 getResults();
-}, 300000   );
+}, 3000   );
 
 
 function getResults() {
