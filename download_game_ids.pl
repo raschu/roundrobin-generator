@@ -78,7 +78,7 @@ my $cnt = 0;
 for (sort @sortgames) {
     my @d = split(/\|/, $_);
     $cnt++;
-    print "$d[5]|$d[1]|$d[2]|$d[3]|$d[4]\n";
+    print "$d[5]   $d[1] $d[2]   $d[3] - $d[4]\n";
 }
 
 print "$cnt games found in the range from $from to $to\n";
