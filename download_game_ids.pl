@@ -35,7 +35,7 @@ print Dumper \@players;
 
 my %games;
 my @sortgames;
-my ($site, $date, $time, $white, $black, $uxts, $sec, $min, $hours, $day, $month, $year);
+my ($site, $date, $time, $white, $black, $uxts, $sec, $min, $hours, $day, $month, $year, $result);
 
 for my $p (@players) {
     my @d = qx(curl https://lichess.org/api/games/user/$p -G -d max=$max);
@@ -56,7 +56,12 @@ for my $p (@players) {
         if ($i =~ m/\[Black /) {
             my @d = split(/\"/, $i);
             $black = $d[1];
-        }       
+        }
+
+        if ($i =~ m/\[Result /) {
+            my @d = split(/\"/, $i);
+            $result = $d[1];
+        }         
         
         if ($i =~ m/\[UTCDate/) {
             my @d = split(/\"/, $i);
@@ -70,11 +75,12 @@ for my $p (@players) {
             $time = $d[1];
             ($hours, $min, $sec) = split(/\:/, $time);
             
-            warn "Debug site : $site\n";
-            warn "Debug white: $white\n";
-            warn "Debug black: $black\n";
-            warn "Debug date : $date\n";
-            warn "Debug time : $time\n";
+            warn "Debug site  : $site\n";
+            warn "Debug white : $white\n";
+            warn "Debug black : $black\n";
+            warn "Debug result: $result\n";
+            warn "Debug date  : $date\n";
+            warn "Debug time  : $time\n";
             warn "hours: $hours\n";
             warn "min  : $min\n";
             warn "sec  : $sec\n";
@@ -85,7 +91,7 @@ for my $p (@players) {
             $uxts = timelocal($sec,$min,$hours,$day,$month,$year);
             warn "uxts : $uxts\n";
             
-            $games{$site} = "$uxts|$date|$time|$white|$black" if $uxts > $from and $uxts < $to;
+            $games{$site} = "$uxts|$date|$time|$white|$black|$result" if $uxts > $from and $uxts < $to;
             
             warn "-----------------\n";
         }         
@@ -102,7 +108,7 @@ my $cnt = 0;
 for (sort @sortgames) {
     my @d = split(/\|/, $_);
     $cnt++;
-    print "$d[5]   $d[1] $d[2]   $d[3] - $d[4]\n";
+    print "$d[1] $d[2]   $d[5] $d[3] - $d[4]\n";
 }
 
 print "$cnt games found in the range from $from to $to ($tourndate, $tournstart)\n";
